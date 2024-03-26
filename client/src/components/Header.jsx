@@ -40,17 +40,17 @@ export default function Header() {
         </div>
         <Navbar.Toggle></Navbar.Toggle>
         <Navbar.Collapse>
-          <Navbar.Link active={location.pathname == "/"} as={div}>
+          <Navbar.Link active={location.pathname == "/"}>
             <Link className=" text-xl" to="/">
               Home
             </Link>
           </Navbar.Link>
-          <Navbar.Link active={location.pathname == "/about"} as={div}>
+          <Navbar.Link active={location.pathname == "/about"}>
             <Link to="/about" className=" text-xl">
               About
             </Link>
           </Navbar.Link>
-          <Navbar.Link active={location.pathname == "/project"} as={div}>
+          <Navbar.Link active={location.pathname == "/project"}>
             <Link to="/project" className=" text-xl">
               Projects
             </Link>

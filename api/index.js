@@ -24,5 +24,5 @@ app.use((err,req,res,next)=>{
     let success=false;
     let statuscode=err.statuscode||500
     let message=err.message||"There is an error"
-    res.status(statuscode).json({success,statuscode,message});
+    res.status(200).json({success,statuscode,message});
 })
