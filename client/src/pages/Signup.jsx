@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Alert, Button, Label, Spinner, TextInput } from "flowbite-react";
 import axios from "axios";
-import Signin from "./Signin";
+
 export default function Signup() {
   const navigate = useNavigate();
   const [formdata, setformdata] = useState({});
