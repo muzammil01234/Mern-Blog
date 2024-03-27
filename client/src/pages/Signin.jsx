@@ -8,6 +8,7 @@ import {
   signInSuccess,
 } from "../redux/user/userSlice";
 import { useDispatch, useSelector } from "react-redux";
+import OAuth from "../components/OAuth";
 export default function Signin() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -83,10 +84,11 @@ export default function Signin() {
               "SignIn"
             )}
           </Button>
+          <OAuth />
           <div className="mt-4">
-            <span className="text-sm">Already have an account? </span>
-            <Link className=" text-teal-500  text-md" to="/signin">
-              Signin
+            <span className="text-sm">Donot have an account? </span>
+            <Link className=" text-teal-500  text-md" to="/signup">
+              SignUp
             </Link>
             {errMessage && (
               <Alert className="mt-5 " color="red">

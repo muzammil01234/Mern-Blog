@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Alert, Button, Label, Spinner, TextInput } from "flowbite-react";
 import axios from "axios";
+import OAuth from "../components/OAuth";
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -88,6 +89,8 @@ export default function Signup() {
               "SignUp"
             )}
           </Button>
+
+          <OAuth />
           <div className="mt-4">
             <span className="text-sm">Already have an account? </span>
             <Link className=" text-teal-500  text-md" to="/signin">

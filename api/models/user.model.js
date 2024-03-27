@@ -15,6 +15,10 @@ const UserSchema= new mongoose.Schema({
         required:true,
         
     },
+    profilePhoto:{
+        type:String,
+        default:"https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg"
+    }
 },
 {timestamps:true})
 
