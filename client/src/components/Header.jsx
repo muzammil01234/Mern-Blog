@@ -1,10 +1,15 @@
 import React from "react";
-import { Button, Navbar, TextInput } from "flowbite-react";
+import { Button, Navbar, TextInput, Dropdown, Avatar } from "flowbite-react";
+import { HiCog, HiCurrencyDollar, HiLogout, HiViewGrid } from "react-icons/hi";
 import { AiOutlineSearch } from "react-icons/ai";
 import { FaMoon } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { toggleTheme } from "../redux/theme/themeSlice";
 export default function Header() {
   const location = useLocation();
+  const dispatch = useDispatch();
+  const { currentUser } = useSelector((state) => state.user);
   return (
     <>
       <Navbar className="border-b-2 ">
@@ -29,14 +34,46 @@ export default function Header() {
           <AiOutlineSearch />
         </Button>
         <div className="flex  gap-2 md:order-2">
-          <Button className="w-12 h-10 " color="gray" pill>
+          <Button
+            className="w-12 h-10 "
+            color="gray"
+            onClick={() => {
+              dispatch(toggleTheme());
+              console.log("clicked");
+            }}
+            pill
+          >
             <FaMoon />
           </Button>
-          <Link to="/signin">
-            <Button gradientDuoTone="purpleToBlue" className=" text-xl">
-              SignIn
-            </Button>
-          </Link>
+          {currentUser ? (
+            <Dropdown
+              label={
+                <Avatar
+                  alt="User settings"
+                  img={currentUser.profilePhoto}
+                  rounded
+                />
+              }
+              arrowIcon={false}
+              inline
+            >
+              <Dropdown.Header>
+                <span className="block text-sm">{currentUser.username}</span>
+                <span className="block truncate text-sm font-medium">
+                  {currentUser.email}
+                </span>
+              </Dropdown.Header>
+              <Dropdown.Item icon={HiViewGrid}>Dashboard</Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown.Item icon={HiLogout}>Sign out</Dropdown.Item>
+            </Dropdown>
+          ) : (
+            <Link to="/signin">
+              <Button gradientDuoTone="purpleToBlue" className=" text-xl">
+                SignIn
+              </Button>
+            </Link>
+          )}
         </div>
         <Navbar.Toggle></Navbar.Toggle>
         <Navbar.Collapse>
